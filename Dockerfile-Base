@@ -20,6 +20,9 @@ RUN npm install && \
     npm install gulp --save-dev && \
     npm install -y && \
     npm install -g jspm && \
+    jspm registry create codehub-registry jspm-npm && \
+    jspm install codehub-registry:package && \
+    jspm registry config codehub-registry && \
     jspm registry config npm -y && \
     jspm init -y && \
     npm install jspm --save-dev && \
