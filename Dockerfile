@@ -10,9 +10,11 @@ ENV APP_VERSION=${app_version}
 COPY . /app
 COPY nginx.conf /etc/nginx
 RUN cat /etc/nginx/nginx.conf
+RUN jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN
 COPY install_run_script.sh /app
 RUN chmod +x /app/install_run_script.sh
 RUN /app/install_run_script.sh
+RUN jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN
 EXPOSE 80 9000
 # Install module dependencies
 CMD ["nginx", "-g", "daemon off;"]
