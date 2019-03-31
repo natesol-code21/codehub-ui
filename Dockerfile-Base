@@ -29,7 +29,7 @@ RUN npm install && \
 
 COPY install_dependencies.sh /app
 RUN chmod +x /app/install_dependencies.sh
-RUN /app/install_dependencies.sh
+#RUN /app/install_dependencies.sh
 #RUN jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN
 COPY entrypoint.sh /app/entrypoint.sh
 RUN chmod 777 /app/entrypoint.sh
