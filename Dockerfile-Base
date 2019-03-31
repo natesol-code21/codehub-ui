@@ -16,13 +16,12 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get install -y nodejs
 RUN npm install && \
     npm install --save-dev && \
-    npm install gulp -g && \
+    #npm install gulp -g && \
     npm install gulp --save-dev && \
+    npm install jspm --save-dev && \
     npm install -y && \
-    npm install -g jspm && \
     jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN && \
     jspm init -y && \
-    npm install jspm --save-dev && \
     jspm install -y && \
     npm install -y gulp && \
     npm install aurelia-framework && \
