@@ -63,6 +63,7 @@ pipeline {
       stage('Remove Unused docker image') {
       steps{
         sh 'docker rmi $(docker images -q -f dangling=true)'
+        sh 'docker rm $(docker ps -a -q)'
         sh 'echo "Successfull!!!!"'
       }
     }
