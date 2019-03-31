@@ -4,7 +4,6 @@ pipeline {
     registry = "nate-docker-production/codehub-ui"
     registryCredential = 'aws ecr get-login --no-include-email'
     DOCKER_LOGIN='aws ecr get-login --no-include-email'
-    JSPM_GITHUB_AUTH_TOKEN='$JSPM_GITHUB_AUTH_TOKEN'
     def dockerImage = ''
     registryurl = '927373803645.dkr.ecr.us-east-1.amazonaws.com/'
 
