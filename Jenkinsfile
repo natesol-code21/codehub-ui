@@ -25,8 +25,8 @@ pipeline {
         script {
           sh 'echo $JSPM_GITHUB_AUTH_TOKEN'
           sh 'eval $(aws ecr get-login --no-include-email)'
-          //docker.build("927373803645.dkr.ecr.us-east-1.amazonaws.com/"+ registryBase + ":$BUILD_NUMBER", "-f Dockerfile-Base .")
-          //sh 'docker push $registryurl$registryBase:$BUILD_NUMBER'
+          docker.build("927373803645.dkr.ecr.us-east-1.amazonaws.com/"+ registryBase + ":$BUILD_NUMBER", "-f Dockerfile-Base .")
+          sh 'docker push $registryurl$registryBase:$BUILD_NUMBER'
           dockerImage = docker.build "927373803645.dkr.ecr.us-east-1.amazonaws.com/"+ registry + ":$BUILD_NUMBER"
           sh 'echo "Completing image build"'
         }
