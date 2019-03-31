@@ -23,9 +23,9 @@ RUN npm install && \
     npm install jspm --save-dev && \
     npm install aurelia-cli -g
 
-COPY install_dependencies.sh /app
-RUN chmod +x /app/install_dependencies.sh
-RUN /app/install_dependencies.sh
+#COPY install_dependencies.sh /app
+#RUN chmod +x /app/install_dependencies.sh
+#RUN /app/install_dependencies.sh
 
 COPY entrypoint.sh /app/entrypoint.sh
 RUN chmod 777 /app/entrypoint.sh
