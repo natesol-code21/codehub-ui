@@ -20,6 +20,7 @@ RUN npm install && \
     npm install gulp --save-dev && \
     npm install -y && \
     npm install -g jspm && \
+    jspm registry config npm -y
     jspm init -y && \
     npm install jspm --save-dev && \
     jspm install -y && \
