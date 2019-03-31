@@ -17,11 +17,12 @@ RUN apt-get install -y nodejs
 RUN npm install && \
     npm install --save-dev && \
     npm install gulp -g && \
-    npm install --save-dev gulp && \
+    npm install gulp --save-dev && \
     npm install -g jspm && \
-    jspm init && \
+    jspm init -y && \
     npm install jspm --save-dev && \
-    npm install aurelia-cli -g
+    npm install aurelia-framework && \
+    npm install aurelia-bootstrapper
 
 COPY install_dependencies.sh /app
 RUN chmod +x /app/install_dependencies.sh
