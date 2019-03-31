@@ -25,8 +25,8 @@ pipeline {
         script {
           sh 'echo $JSPM_GITHUB_AUTH_TOKEN'
           sh 'eval $(aws ecr get-login --no-include-email)'
-          docker.build("927373803645.dkr.ecr.us-east-1.amazonaws.com/"+ registryBase + ":$BUILD_NUMBER", "-f Dockerfile-Base .")
-          sh 'docker push $registryurl$registryBase:$BUILD_NUMBER'
+          //docker.build("927373803645.dkr.ecr.us-east-1.amazonaws.com/"+ registryBase + ":$BUILD_NUMBER", "-f Dockerfile-Base .")
+          //sh 'docker push $registryurl$registryBase:$BUILD_NUMBER'
           dockerImage = docker.build "927373803645.dkr.ecr.us-east-1.amazonaws.com/"+ registry + ":$BUILD_NUMBER"
           sh 'echo "Completing image build"'
         }
@@ -57,8 +57,10 @@ pipeline {
           sh 'aws ecs register-task-definition --cli-input-json file://codehub-ui-taskDefinition.json'
           sh 'ls -l'
           //sh 'aws ec2 authorize-security-group-ingress --group-name my-ecs-sg --protocol tcp --port 1-65535 --source-group my-elb-sg'
-          sh 'aws ecs create-service --cluster codehub-cluster --service-name codehub-ui-service --task-definition codehub-ui --cli-input-json file://codehub-ui-service.json'
+          //sh 'aws ecs create-service --cluster codehub-cluster --service-name codehub-ui-service --task-definition codehub-ui --cli-input-json file://codehub-ui-service.json'
           //sh 'aws ecs run-task  --cluster codehub-cluster --task-definition codehub-ui --count 1'
+          sh 'aws ecs update-service --cluster codehub-cluster --service codehub-ui-service --task-definition codehub-ui --desired-count 4'
+
           sh 'echo "Completing deploying service"'
         }
       }
