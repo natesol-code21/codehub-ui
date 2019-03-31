@@ -22,6 +22,7 @@ pipeline {
       steps{
 
         script {
+          sh 'echo $JSPM_GITHUB_AUTH_TOKEN'
           sh 'eval $(aws ecr get-login --no-include-email)'
           dockerImage = docker.build "927373803645.dkr.ecr.us-east-1.amazonaws.com/"+ registry + ":$BUILD_NUMBER"
           sh 'echo "Completing image build"'
