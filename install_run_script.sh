@@ -9,4 +9,5 @@ npm install -y
 #npm install -y gulp
 #npm install jspm --save-dev
 jspm install -y
+#jspm install bootstrap=npm:bootstrap
 gulp build

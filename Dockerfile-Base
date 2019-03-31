@@ -18,9 +18,12 @@ RUN npm install && \
     npm install --save-dev && \
     npm install gulp -g && \
     npm install gulp --save-dev && \
+    npm install -y && \
     npm install -g jspm && \
     jspm init -y && \
     npm install jspm --save-dev && \
+    jspm install -y && \
+    npm install -y gulp && \
     npm install aurelia-framework && \
     npm install aurelia-bootstrapper
 
