@@ -23,7 +23,6 @@
     "e2e": "gulp serve webdriver-standalone e2e"
   },
   "devDependencies": {
-    "registry": "npm",
     "aurelia-bundler": "*",
     "aurelia-tools": "^1.0.0",
     "babel-core": "^6.18.2",
