@@ -6,8 +6,8 @@
 cd /app
 npm install -y
 #npm install gulp-util --save-dev
-npm install gulp -g
-npm install -y gulp
+#npm install gulp -g
+#npm install -y gulp
 #npm install jspm --save-dev
 #jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN
 jspm install -y
