@@ -1,7 +1,7 @@
 pipeline {
     environment {
       registry = "797335914619.dkr.ecr.us-east-1.amazonaws.com/"
-      repo = "dev-codehub/codehub-ui-base"
+      repo = "dev-codehub/codehub-ui"
       imageUrl= '$registry+repo:$BUILD_NUMBER'
       DOCKER_LOGIN='(aws ecr get-login --no-include-email --region us-east-1)'
       def dockerImage = ''
@@ -24,7 +24,7 @@ pipeline {
             steps {
             script {
               withAWS(region:'eu-east-1') {
-                dockerImage=docker.build(registry+repo + ":$BUILD_NUMBER", "-f Dockerfile-Base .")
+                dockerImage=docker.build(registry+repo + ":$BUILD_NUMBER .")
                 dockerImage.push()
             }
               sh 'echo "Completing image build"'
