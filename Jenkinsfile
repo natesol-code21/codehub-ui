@@ -14,7 +14,7 @@ pipeline {
         stage('Checkout') {
             steps {
             git(
-                branch: 'development',
+                branch: 'dev_jenkins',
                 url: 'https://github.com/usdot-jpo-codehub/codehub-ui.git'
             )
             sh 'ls -l'
