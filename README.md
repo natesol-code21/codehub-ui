@@ -182,4 +182,4 @@ A gulp task is already configured for that. Use the following command to export 
 The app will be exported into ```export``` directory preserving the directory structure.
 #### Configuration
 The configuration is done by ```bundles.js``` file.
-In addition, ```export.js``` file is available for including individual files...
+In addition, ```export.js``` file is available for including individual files.
