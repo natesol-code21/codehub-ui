@@ -97,8 +97,8 @@ pipeline {
               //withAWS(role: 'codehub-cicd-service',region:'us-east-1') {
                 sh 'eval $(aws ecr get-login --no-include-email --region us-east-1)'
                 sh 'aws ecs register-task-definition --region us-east-1 --cli-input-json file://codehub-ui-taskDefinition.json'
-                sh 'aws ecs create-service --cluster codehub-cluster --service-name codehub-ui-service --task-definition codehub-ui --cli-input-json file://codehub-ui-service.json'
-                sh 'aws ecs update-service --cluster default --service codehub-ui-service --task-definition codehub-ui --desired-count 1'
+                sh 'aws ecs create-service --cluster codehub-cluster --region us-east-1 --service-name codehub-ui-service --task-definition codehub-ui --cli-input-json file://codehub-ui-service.json'
+                sh 'aws ecs update-service --cluster codehub-cluster --service codehub-ui-service --task-definition codehub-ui --desired-count 1'
                 sh 'echo "Completing deploying service"'
               //}
 
