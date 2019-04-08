@@ -1,0 +1,14 @@
+{
+              "cluster": "codehub-cluster",
+              "serviceName": "codehub-ui-service",
+              "taskDefinition": "codehub-ui",
+              "loadBalancers": [
+                  {
+                      "targetGroupArn":"arn:aws:elasticloadbalancing:us-east-1:797335914619:loadbalancer/app/codehub-cicd/fac9754c55a1eab8",
+                      "containerName": "codehub-ui",
+                      "containerPort": 80
+                  }
+              ],
+              "desiredCount": 0,
+              "role": "codehub-cicd-service"
+}

@@ -87,6 +87,26 @@ pipeline {
                 sh 'echo Service is Updated'
             }
         }
+
+        stage('Deploy Service') {
+            steps{
+            script {
+              SERVICE_NAME="codehub-ui-service"
+              IMAGE_VERSION="$BUILD_NUMBER"
+              TASK_FAMILY="codehub-ui"
+              withAWS(region:'eu-east-1') {
+                sh 'aws ecs register-task-definition --cli-input-json file://codehub-ui-taskDefinition.json'
+                sh 'ls -l'
+                sh 'aws ecs create-service --cluster codehub-cluster --service-name codehub-ui-service --task-definition codehub-ui --cli-input-json file://codehub-ui-service.json'
+                sh 'aws ecs update-service --cluster default --service codehub-ui-service --task-definition codehub-ui --desired-count 1'
+                sh 'echo "Completing deploying service"'
+              }
+
+            }
+          }
+          }
+
+
         stage('Deloy') {
             steps {
 
