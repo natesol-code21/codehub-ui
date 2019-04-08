@@ -24,7 +24,7 @@ pipeline {
             steps {
             script {
               withAWS(region:'eu-east-1') {
-                dockerImage=docker.build(registry+repo + ":$BUILD_NUMBER .")
+                dockerImage=docker.build(registry+repo + ":$BUILD_NUMBER")
                 dockerImage.push()
             }
               sh 'echo "Completing image build"'
