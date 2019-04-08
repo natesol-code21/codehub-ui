@@ -10,6 +10,6 @@ npm install -y
 #npm install -y gulp
 #npm install jspm --save-dev
 #jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN
-#jspm install -y
+jspm install -y
 #jspm install bootstrap=npm:bootstrap
 gulp build
