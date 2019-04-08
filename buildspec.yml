@@ -1,17 +1,17 @@
 ---
 version: 1.0
-  phases:
-    pre_build:
-      commands:
-        - echo `loggin in`
-        - eval $(aws ecr get-login --no-include-email)
-    build:
-      commands:
-        - echo `loggin in`
-        - docker build -f Dockerfile-Base -t nate-docker-production/codehub-ui:latest .
-        - docker tag nate-docker-production/codehub-ui:latest 927373803645.dkr.ecr.us-east-1.amazonaws.com/nate-docker-production/codehub-ui:latest
+phases:
+  pre_build:
+    commands:
+      - echo `loggin in`
+      - eval $(aws ecr get-login --no-include-email)
+  build:
+    commands:
+      - echo `loggin in`
+      - docker build -f Dockerfile-Base -t nate-docker-production/codehub-ui:latest .
+      - docker tag nate-docker-production/codehub-ui:latest 927373803645.dkr.ecr.us-east-1.amazonaws.com/nate-docker-production/codehub-ui:latest
 
-    post_build:
-      commands:
-        - echo `pushing`
-        - docker push 927373803645.dkr.ecr.us-east-1.amazonaws.com/nate-docker-production/codehub-ui:latest
+  post_build:
+    commands:
+      - echo `pushing`
+      - docker push 927373803645.dkr.ecr.us-east-1.amazonaws.com/nate-docker-production/codehub-ui:latest
