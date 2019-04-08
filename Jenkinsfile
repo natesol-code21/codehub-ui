@@ -19,6 +19,22 @@ pipeline {
         sh 'ls -l'
       }
     }
+    
+    stage('Build') {
+            steps {
+            script {
+              //sh 'eval $registryCredential'
+              //sh 'docker login'
+              //docker.build(registryBase + ":$BUILD_NUMBER", "-f Dockerfile-Base .")
+              //sh 'docker push $registryBase:$BUILD_NUMBER'
+              sh 'eval $(aws ecr get-login --no-include-email)'
+              sh 'aws codebuild start-build --project-name codehub-ui-base'
+              sh 'echo "Completing image build"'
+            }
+            }
+        }
+    
+    
     stage('Building image') {
       steps{
 
