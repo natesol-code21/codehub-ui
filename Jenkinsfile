@@ -20,14 +20,24 @@ pipeline {
             sh 'ls -l'
         }
         }
-        stage('Build Base Image') {
+        stage('Build Codehub-UI Image') {
             steps {
             script {
               withAWS(region:'eu-east-1') {
                 dockerImage=docker.build(registry+repo + ":$BUILD_NUMBER")
-                dockerImage.push()
             }
               sh 'echo "Completing image build"'
+            }
+            }
+        }
+
+        stage('Publish Codehub-UI Image') {
+            steps {
+            script {
+              withAWS(region:'eu-east-1') {
+                dockerImage.push()
+            }
+              sh 'echo "publishing Updating Image Completed!!"'
             }
             }
         }
