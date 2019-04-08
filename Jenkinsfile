@@ -1,8 +1,9 @@
 pipeline {
     environment {
-      registry = "natesol15/codehub-ui-base"
-      registryBase = "natesol15/codehub-ui-base"
-      DOCKER_LOGIN='aws ecr get-login --no-include-email'
+      registry = "797335914619.dkr.ecr.us-east-1.amazonaws.com/"
+      repo = "dev-codehub/codehub-ui-base"
+      imageUrl= '$registry+repo:$BUILD_NUMBER'
+      DOCKER_LOGIN='(aws ecr get-login --no-include-email --region us-east-1)'
       def dockerImage = ''
       registryurl = '927373803645.dkr.ecr.us-east-1.amazonaws.com/'
 
@@ -13,7 +14,7 @@ pipeline {
         stage('Checkout') {
             steps {
             git(
-                branch: 'dev_jenkins',
+                branch: 'development',
                 url: 'https://github.com/usdot-jpo-codehub/codehub-ui.git'
             )
             sh 'ls -l'
@@ -22,10 +23,20 @@ pipeline {
         stage('Build') {
             steps {
             script {
-              //sh 'eval $registryCredential'
-              sh 'docker login'
-              docker.build(registryBase + ":$BUILD_NUMBER", "-f Dockerfile-Base .")
-              sh 'docker push $registryBase:$BUILD_NUMBER'
+              //sh 'eval $DOCKER_LOGIN'
+              //sh 'docker login'
+              //docker build -t dev-codehub/codehub-ui-base .
+              //dockerImage=docker.build(registry+repo + ":$BUILD_NUMBER", "-f Dockerfile-Base .")
+              //dockerImage.push()
+              withAWS(region:'eu-east-1') {
+                    // do something
+                dockerImage=docker.build(registry+repo + ":$BUILD_NUMBER", "-f Dockerfile-Base .")
+                //sh 'eval $(aws ecr get-login --no-include-email --region us-east-1)'
+                //sh 'docker push 797335914619.dkr.ecr.us-east-1.amazonaws.com/dev-codehub/codehub-ui-base:latest'
+                dockerImage.push()
+               // dockerImage.push()
+            }
+              //sh 'docker push 797335914619.dkr.ecr.us-east-1.amazonaws.com/dev-codehub/codehub-ui-base:latest'
               sh 'echo "Completing image build"'
             }
             }
@@ -37,18 +48,9 @@ pipeline {
             }
         }
 
-        stage('Sonarqube Scan') {
-            //environment {
-           //     scannerHome = tool 'SonarQubeScanner'
-           // }
+        stage('Sonar Scan') {
             steps {
-            //    withSonarQubeEnv('Sonarqube') {
-                    //sh "${scannerHome}/bin/sonar-scanner"
-            //    }
-            //    timeout(time: 10, unit: 'MINUTES') {
-                    //waitForQualityGate abortPipeline: true
-             //   }
-                sh 'echo Sonarqube Scan is complete'
+                sh 'echo Sonar Scan is complete'
             }
         }
 
