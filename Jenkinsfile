@@ -23,20 +23,10 @@ pipeline {
         stage('Build') {
             steps {
             script {
-              //sh 'eval $DOCKER_LOGIN'
-              //sh 'docker login'
-              //docker build -t dev-codehub/codehub-ui-base .
-              //dockerImage=docker.build(registry+repo + ":$BUILD_NUMBER", "-f Dockerfile-Base .")
-              //dockerImage.push()
               withAWS(region:'eu-east-1') {
-                    // do something
                 dockerImage=docker.build(registry+repo + ":$BUILD_NUMBER", "-f Dockerfile-Base .")
-                //sh 'eval $(aws ecr get-login --no-include-email --region us-east-1)'
-                //sh 'docker push 797335914619.dkr.ecr.us-east-1.amazonaws.com/dev-codehub/codehub-ui-base:latest'
                 dockerImage.push()
-               // dockerImage.push()
             }
-              //sh 'docker push 797335914619.dkr.ecr.us-east-1.amazonaws.com/dev-codehub/codehub-ui-base:latest'
               sh 'echo "Completing image build"'
             }
             }
