@@ -23,7 +23,7 @@ pipeline {
         stage('Build Codehub-UI Image') {
             steps {
             script {
-              withAWS(region:'eu-east-1') {
+              withAWS(region:'us-east-1') {
                 dockerImage=docker.build(registry+repo + ":$BUILD_NUMBER")
             }
               sh 'echo "Completing image build"'
@@ -34,7 +34,7 @@ pipeline {
         stage('Publish Codehub-UI Image') {
             steps {
             script {
-              withAWS(region:'eu-east-1') {
+              withAWS(region:'us-east-1') {
                 dockerImage.push()
             }
               sh 'echo "publishing Updating Image Completed!!"'
@@ -94,7 +94,7 @@ pipeline {
               SERVICE_NAME="codehub-ui-service"
               IMAGE_VERSION="$BUILD_NUMBER"
               TASK_FAMILY="codehub-ui"
-              withAWS(region:'eu-east-1') {
+              withAWS(region:'us-east-1') {
                 sh 'aws ecs register-task-definition --cli-input-json file://codehub-ui-taskDefinition.json'
                 sh 'ls -l'
                 sh 'aws ecs create-service --cluster codehub-cluster --service-name codehub-ui-service --task-definition codehub-ui --cli-input-json file://codehub-ui-service.json'
