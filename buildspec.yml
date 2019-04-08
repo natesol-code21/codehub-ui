@@ -10,8 +10,6 @@ phases:
       - echo `loggin in`
       - docker build -f Dockerfile-Base -t nate-docker-production/codehub-ui-base:latest .
       - docker tag nate-docker-production/codehub-ui-base:latest 927373803645.dkr.ecr.us-east-1.amazonaws.com/nate-docker-production/codehub-ui-base:latest
-
   post_build:
     commands:
-      - echo `pushing`
       - docker push 927373803645.dkr.ecr.us-east-1.amazonaws.com/nate-docker-production/codehub-ui-base:latest
