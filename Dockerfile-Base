@@ -16,12 +16,12 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get install -y nodejs
 RUN npm install && \
     npm install --save-dev && \
-    #npm install gulp -g && \
+    npm install gulp -g && \
     npm install gulp --save-dev && \
     npm install jspm --save-dev && \
     npm install -y && \
     npm install jspm -g && \
-    jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN && \
+    #jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN && \
     jspm init -y && \
     jspm install -y && \
     npm install -y gulp && \
