@@ -1,17 +1,17 @@
 pipeline {
     environment {
-      registry = "797335914619.dkr.ecr.us-east-1.amazonaws.com/"
-      repo = "dev-codehub/codehub-ui"
+      registry = "927373803645.dkr.ecr.us-east-1.amazonaws.com/"
+      repo = "nate-docker-production/codehub-ui"
       imageUrl= '$registry+repo:$BUILD_NUMBER'
       DOCKER_LOGIN='(aws ecr get-login --no-include-email --region us-east-1)'
       def dockerImage = ''
       registryurl = '927373803645.dkr.ecr.us-east-1.amazonaws.com/'
-
+      //docker tag nate-docker-production/codehub-ui-base:latest 927373803645.dkr.ecr.us-east-1.amazonaws.com/nate-docker-production/codehub-ui-base:latest
     }
       agent any
 
     stages {
-        stage('Checkout') {
+        stage('Checkout'){
             steps {
             git(
                 branch: 'dev_jenkins',

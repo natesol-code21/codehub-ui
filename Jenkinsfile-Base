@@ -1,7 +1,7 @@
 pipeline {
     environment {
-      registry = "797335914619.dkr.ecr.us-east-1.amazonaws.com/"
-      repo = "dev-codehub/codehub-ui-base"
+      registry = "927373803645.dkr.ecr.us-east-1.amazonaws.com/"
+      repo = "nate-docker-production/codehub-ui-base"
       imageUrl= '$registry+repo:$BUILD_NUMBER'
       DOCKER_LOGIN='(aws ecr get-login --no-include-email --region us-east-1)'
       def dockerImage = ''
@@ -23,7 +23,7 @@ pipeline {
         stage('Build Codehub-UI Base Image') {
             steps {
             script {
-              withAWS(region:'eu-east-1') {
+              withAWS(region:'us-east-1') {
                 dockerImage=docker.build(registry+repo + ":$BUILD_NUMBER", "-f Dockerfile-Base .")
             }
               sh 'echo "Completing image build"'
@@ -34,7 +34,7 @@ pipeline {
         stage('Publish Codehub-UI Base Image') {
             steps {
             script {
-              withAWS(region:'eu-east-1') {
+              withAWS(region:'us-east-1') {
                 dockerImage.push()
             }
               sh 'echo "Completing image build"'
