@@ -10,5 +10,5 @@
                   }
               ],
               "desiredCount": 0,
-              "role": ["BAHServiceRoleForECS","BAHServiceRoleForECSTaskExecution","BAHServiceRoleForECSAutoScale"]
+              "role": "BAHServiceRoleForECSAutoScale"
 }
