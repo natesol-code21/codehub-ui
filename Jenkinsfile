@@ -3,7 +3,7 @@ pipeline {
       registry = "927373803645.dkr.ecr.us-east-1.amazonaws.com/"
       repo = "nate-docker-production/codehub-ui"
       imageUrl= '$registry+repo:$BUILD_NUMBER'
-      DOCKER_LOGIN='(aws ecr get-login --no-include-email --region us-east-1)'
+      //DOCKER_LOGIN='(aws ecr get-login --no-include-email --region us-east-1)'
       def dockerImage = ''
       registryurl = '927373803645.dkr.ecr.us-east-1.amazonaws.com/'
       //docker tag nate-docker-production/codehub-ui-base:latest 927373803645.dkr.ecr.us-east-1.amazonaws.com/nate-docker-production/codehub-ui-base:latest

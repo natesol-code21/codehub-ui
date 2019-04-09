@@ -1,4 +1,4 @@
-FROM 797335914619.dkr.ecr.us-east-1.amazonaws.com/dev-codehub/codehub-ui-base:latest
+FROM 927373803645.dkr.ecr.us-east-1.amazonaws.com/nate-docker-production/codehub-ui-base:latest
 MAINTAINER Nate Solomon<solomon_nathaniel@bah.com>
 LABEL application=codehub-dev
 
