@@ -5,7 +5,8 @@
     "loadBalancers": [
         {
             "targetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:927373803645:targetgroup/dev-codehub-ui-targets/7a8031f629106bf0",
-            "containerName": "codehub-ui"
+            "containerName": "codehub-ui",
+            "containerPort": 80
         }
     ],
     "launchType": "FARGATE",
