@@ -4,9 +4,9 @@
         {
             "image": "797335914619.dkr.ecr.us-east-1.amazonaws.com/dev-codehub/codehub-ui:latest",
             "name": "codehub-ui",
-            "cpu": 10,
-            "memory": 256,
-            "essential": true,
+            "network_mode":"awsvpc",
+            "memory":512,
+            "requires_compatibilities":["FARGATE"],
             "portMappings": [
                 {
                     "containerPort": 80,
