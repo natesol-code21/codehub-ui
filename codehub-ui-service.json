@@ -4,11 +4,11 @@
               "taskDefinition": "codehub-ui",
               "loadBalancers": [
                   {
-                      "targetGroupArn":"arn:aws:elasticloadbalancing:us-east-1:797335914619:targetgroup/codehub-test-ui-target/4931547f6168bdd0",
+                      "targetGroupArn":"arn:aws:elasticloadbalancing:us-east-1:927373803645:targetgroup/dev-codehub-ui-targets/7a8031f629106bf0",
                       "containerName": "codehub-ui",
                       "containerPort": 80
                   }
               ],
               "desiredCount": 0,
-              "role": "BAHServiceRoleForECS"
+              "role": "ecs-service-role"
 }
