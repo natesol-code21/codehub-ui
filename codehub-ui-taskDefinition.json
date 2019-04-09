@@ -5,13 +5,6 @@
             {
                 "name": "codehub-ui",
                 "image": "927373803645.dkr.ecr.us-east-1.amazonaws.com/nate-docker-production/codehub-ui:latest",
-                "portMappings": [
-                    {
-                        "containerPort": 0,
-                        "hostPort": 0,
-                        "protocol": "tcp"
-                    }
-                ],
                 "essential": true,
                 "entryPoint": [
                     "sh",
