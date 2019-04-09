@@ -1,6 +1,6 @@
 {
     "family": "codehub-ui",
-        "networkMode": "none",
+        "networkMode": "awsvpc",
         "containerDefinitions": [
             {
                 "name": "codehub-ui",
