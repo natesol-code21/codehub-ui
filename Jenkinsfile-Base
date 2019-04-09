@@ -24,7 +24,7 @@ pipeline {
             steps {
             script {
               withAWS(region:'us-east-1') {
-                sh 'eval $DOCKER_LOGIN'
+                sh 'eval $(aws ecr get-login --no-include-email --region us-east-1)'
                 dockerImage=docker.build(registry+repo + ":$BUILD_NUMBER", "-f Dockerfile-Base .")
             }
               sh 'echo "Completing image build"'
