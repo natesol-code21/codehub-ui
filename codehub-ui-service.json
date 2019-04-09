@@ -10,5 +10,5 @@
                   }
               ],
               "desiredCount": 0,
-              "role": "codehub-cicd-service"
+              "role": "BAHServiceRoleForECS"
 }
