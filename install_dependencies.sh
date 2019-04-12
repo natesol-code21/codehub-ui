@@ -1,5 +1,5 @@
 #!/bin/sh
-
+yum install python-yaml
 jspm config registries.github.repo jspm-registry
 jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN
 jspm config registries.github.maxRepoSize 10000000

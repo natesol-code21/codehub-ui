@@ -27,8 +27,6 @@ RUN npm install && \
     npm install aurelia-framework && \
     npm install aurelia-bootstrapper
 
-RUN yum install python-yaml
-
 COPY install_dependencies.sh /app
 RUN chmod +x /app/install_dependencies.sh
 RUN /app/install_dependencies.sh
