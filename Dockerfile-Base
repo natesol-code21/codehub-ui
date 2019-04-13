@@ -25,7 +25,10 @@ RUN npm install && \
     jspm install -y && \
     npm install -y gulp && \
     npm install aurelia-framework && \
-    npm install aurelia-bootstrapper
+    npm install aurelia-bootstrapper && \
+    npm install js-yaml -g && \
+    npm install js-yaml
+
 
 COPY install_dependencies.sh /app
 RUN chmod +x /app/install_dependencies.sh
