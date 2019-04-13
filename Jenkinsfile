@@ -9,7 +9,7 @@ pipeline {
       //docker tag nate-docker-production/codehub-ui-base:latest 927373803645.dkr.ecr.us-east-1.amazonaws.com/nate-docker-production/codehub-ui-base:latest
     }
       agent any
-
+      tools {nodejs "node"}
     stages {
         stage('Checkout'){
             steps {
@@ -95,14 +95,13 @@ pipeline {
               SERVICE_NAME="codehub-ui-service"
               IMAGE_VERSION="$BUILD_NUMBER"
               TASK_FAMILY="codehub-ui"
-              //withAWS(role: 'codehub-cicd-service',region:'us-east-1') {
-                sh 'eval $(aws ecr get-login --no-include-email --region us-east-1)'
-                sh 'aws ecs register-task-definition --region us-east-1 --cli-input-json file://codehub-ui-taskDefinition.json'
-                sh 'aws ecs create-service --cluster codehub-ui-cluster --region us-east-1 --service-name codehub-ui-service --task-definition codehub-ui --cli-input-json file://codehub-ui-service.json'
-                sh 'aws ecs update-service --cluster codehub-ui-cluster --region us-east-1 --service codehub-ui-service --task-definition codehub-ui --desired-count 1'
-                sh 'echo "Completing deploying service"'
-              //}
-
+                sh 'npm config ls'
+                sh 'npm install js-yaml -g'
+                sh 'npm install js-yaml'
+                sh 'aws ecs register-task-definition --cli-input-json file://codehub-ui-taskDefinition.json --region us-east-1'
+                sh 'node process_appspec.js $(aws ecs list-task-definitions --family-prefix codehub-ui | jq -r ".taskDefinitionArns[-1]")'
+                sh 'aws s3 cp appspec.yaml s3://codehub-ui/'
+                sh 'aws deploy create-deployment --cli-input-json file://codehub-ui-create-deployment.json --region us-east-1'
             }
           }
           }
