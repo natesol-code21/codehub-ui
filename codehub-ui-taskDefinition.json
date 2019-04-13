@@ -10,15 +10,7 @@
                     "containerPort": 80
                   }
                 ],
-                "essential": true,
-                "entryPoint": [
-                    "sh",
-                    "-c",
-                    "./app/entrypoint.sh"
-                ],
-                "command": [
-                  "/bin/sh -c \"'nginx', '-g', 'daemon off;'\""
-                ]
+                "essential": true
             }
         ],
         "requiresCompatibilities": [
