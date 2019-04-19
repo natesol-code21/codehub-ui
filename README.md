@@ -84,5 +84,5 @@ au package-bundle --env prod
 ```
 By default a **dist** folder will be created and all the required files will be copied to it.
 
-The configuration of the bundle is manage throught he **aurelia.json" file under the **aurelia_project** folder.
+The configuration of the bundle is manage throught he **aurelia.json" file under the **aurelia_project** folder...
 
